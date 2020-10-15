@@ -1,12 +1,18 @@
-kind: Pod
-apiVersion: v1
+apiVersion: extensions/v1beta1
+kind: Deployment
 metadata:
-  name: apple-app
-  labels:
-    app: apple
+  name: "2048-deployment"
+  namespace: "2048-game"
 spec:
-  containers:
-    - name: apple-app
-      image: hashicorp/http-echo
-      args:
-        - "-text=apple"
+  replicas: 5
+  template:
+    metadata:
+      labels:
+        app: "2048"
+    spec:
+      containers:
+      - image: alexwhen/docker-2048
+        imagePullPolicy: Always
+        name: "2048"
+        ports:
+        - containerPort: 80
