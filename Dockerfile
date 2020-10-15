@@ -1,1 +1,3 @@
-FROM httpd:2.4
+FROM node:14-alpine
+
+RUN apk add -U subversion
