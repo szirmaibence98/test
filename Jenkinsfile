@@ -1,18 +1,12 @@
 pipeline {
-
-  agent any
-
-  stages {
-
- 
-    stage('Deploy App') {
-      steps {
-        script {
-          kubernetesDeploy(configs: "myweb.yaml", kubeconfigId: "kubeconfig")
-        }
-      }
+    agent {
+        docker { image 'node:14-alpine' }
     }
-
-  }
-
+    stages {
+        stage('Test') {
+            steps {
+                sh 'node --version'
+            }
+        }
+    }
 }
