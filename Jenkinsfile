@@ -1,7 +1,6 @@
 pipeline {
-    agent {
-        any
-    }
+    agent any
+    
     environment {
         // The MY_KUBECONFIG environment variable will be assigned
         // the value of a temporary file.  For example:
