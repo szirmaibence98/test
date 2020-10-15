@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        // Define agent details here
+        any
     }
     environment {
         // The MY_KUBECONFIG environment variable will be assigned
