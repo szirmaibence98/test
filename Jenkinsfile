@@ -1,5 +1,13 @@
 pipeline {
 
+
+  environment {
+    registry = "192.168.0.133:5000/justme/myweb"
+    dockerImage = ""
+  }
+
+
+
   agent any
 
   stages {
@@ -20,11 +28,22 @@ pipeline {
         }
     
 
+    stage('Push Image') {
+      steps{
+        script {
+          docker.withRegistry( "" ) {
+            dockerImage.push()
+          }
+        }
+      }
+    }
+
+
     
     stage('Deploy App') {
       steps {
         script {
-          kubernetesDeploy(configs: "hellowhale.yml", kubeconfigId: "kubeconfig")
+          kubernetesDeploy(configs: "myweb.yaml", kubeconfigId: "kubeconfig")
         }
       }
     }
@@ -32,3 +51,5 @@ pipeline {
   }
 
 }
+
+
