@@ -14,7 +14,31 @@ pipeline {
 
 
 
+
   stages {
+
+
+
+    stage('Back-end') {
+        steps {
+            sh 'mvn --version'
+        }
+    }
+
+    stage('Front-end') {
+        steps {
+            sh 'node --version'
+        }
+    }
+
+
+
+
+
+
+
+
+
     stage('Checkout Source') {
       steps {
         git(url: 'https://github.com/szirmaibence98/test.git', branch: 'main')
