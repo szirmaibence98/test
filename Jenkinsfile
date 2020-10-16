@@ -37,7 +37,7 @@ pipeline {
   stage("Push image") {
             steps {
                 script {
-                    docker.withRegistry('https://hub.docker.com/repository/docker/szirmaibence98/jenkins', 'docker-hub-credentials') {
+                    docker.withRegistry('https://hub.docker.com', 'docker-hub-credentials') {
                             myapp.push("latest")
                             myapp.push("${env.BUILD_ID}")
                     }
