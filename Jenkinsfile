@@ -16,38 +16,36 @@ pipeline {
   stages {
 
 
+    stage('paralel test') {
+        parallel {
 
-stage('paralel test') {
-    parallel {
 
+            stage('Back-end') {
+                steps {
+                    sh 'mvn --version'
+                }
+            }
 
-    stage('Back-end') {
-        steps {
-            sh 'mvn --version'
+            stage('Front-end') {
+                steps {
+                    sh 'node --version'
+                }
+            }
+
+            stage('kubernetes') {
+                steps {
+                    sh '/usr/local/bin/kubectl get all'
+                }
+            }   
+
+            stage('df') {
+                steps {
+                    sh 'df -h'
+                }
+            }
+
         }
     }
-
-    stage('Front-end') {
-        steps {
-            sh 'node --version'
-        }
-    }
-
-
-    stage('kubernetes') {
-        steps {
-            sh '/usr/local/bin/kubectl get all'
-        }
-    }
-
-    stage('df') {
-        steps {
-            sh 'df -h'
-        }
-    }
-
-    }
-}
 
 
 
