@@ -57,6 +57,12 @@ pipeline {
 
 
 
+
+
+    stage('paralel docker build') {
+        parallel {
+
+
     stage('Build image') {
       steps {
         script {
@@ -65,7 +71,6 @@ pipeline {
 
       }
     }
-
 
     stage('Build custom name image') {
       steps {
@@ -76,6 +81,9 @@ pipeline {
       }
     }
 
+
+    }
+    }
 
 
 
