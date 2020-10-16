@@ -16,17 +16,6 @@ pipeline {
       }
     }
 
-    stage('Push Image') {
-      steps {
-        script {
-          docker.withRegistry( "" ) {
-            dockerImage.push()
-          }
-        }
-
-      }
-    }
-
     stage('Deploy App') {
       parallel {
         stage('Deploy App') {
