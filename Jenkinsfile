@@ -13,10 +13,12 @@ pipeline {
 
 
 
-
-
   stages {
 
+
+
+stage('paralel test') {
+    parallel {
 
 
     stage('Back-end') {
@@ -44,8 +46,8 @@ pipeline {
         }
     }
 
-
-
+    }
+}
 
 
 
@@ -82,18 +84,17 @@ pipeline {
 
 
 
-    stage('Deploy App') {
-      parallel {
-        stage('Deploy App') {
-          steps {
-            script {
-              kubernetesDeploy(configs: "myweb.yaml", kubeconfigId: "kubeconfig")
-            }
-
-          }
-        }
-      }
-    }
+#    stage('Deploy App') {
+#      parallel {
+#        stage('Deploy App') {
+#          steps {
+#            script {
+#              kubernetesDeploy(configs: "myweb.yaml", kubeconfigId: "kubeconfig")
+#            }
+#          }
+#        }
+#      }
+#    }
 
 
 
