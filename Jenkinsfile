@@ -38,6 +38,11 @@ pipeline {
         }
     }
 
+    stage('df') {
+        steps {
+            sh 'df -h'
+        }
+    }
 
 
 
