@@ -32,6 +32,11 @@ pipeline {
     }
 
 
+    stage('kubernetes') {
+        steps {
+            sh 'kubectl get all'
+        }
+    }
 
 
 
