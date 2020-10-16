@@ -67,6 +67,17 @@ pipeline {
     }
 
 
+    stage('Build custom name image') {
+      steps {
+        script {
+          myapp = docker.build("szirmaibence98/jenkins:${env.BUILD_ID} -f "Dockerfilecustomname".")
+        }
+
+      }
+    }
+
+
+
 
   stage("Push image") {
             steps {
